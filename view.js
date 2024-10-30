@@ -1,7 +1,36 @@
 // ---- Define your dialogs  and panels here ----
 
+let effPerms = define_new_effective_permissions("effective_perms", true)
+$('#sidepanel').append(effPerms)
 
+let userSelector = define_new_user_select_field("user_select", "Select User", function(selected_user) {
+    effPerms.attr('username', selected_user);
+});
 
+$('#sidepanel').append(userSelector);
+
+effPerms.attr('filepath', '/C/presentation_documents/important_file.txt');
+
+let singleLog = define_new_dialog("explanation", "More Info");
+
+$('.perm_info').click(function(){
+    let filepath = $('#effective_perms').attr('filepath');
+    let username = $('#effective_perms').attr('username');
+    let perms = $(this).attr('permission_name');
+
+    let user = all_users[filepath];
+    let file = path_to_file[username];
+
+    if (user && file) {
+        let allowed = allow_user_action(file, user, perms);
+        let explanation = get_explanation_text(allowed);
+
+        explanation.text(explanation);
+        explanation_dialog.dialog('open');
+    } else {
+        console.log("Error :(")
+    }
+})
 // ---- Display file structure ----
 
 // (recursively) makes and returns an html element (wrapped in a jquery object) for a given file object
@@ -41,7 +70,7 @@ function make_file_element(file_obj) {
 
 for(let root_file of root_files) {
     let file_elem = make_file_element(root_file)
-    $( "#filestructure" ).append( file_elem);    
+    $( "#filestructure" ).append( file_elem);
 }
 
 
@@ -69,6 +98,5 @@ $('.permbutton').click( function( e ) {
     emitter.dispatchEvent(new CustomEvent('userEvent', { detail: new ClickEntry(ActionEnum.CLICK, (e.clientX + window.pageXOffset), (e.clientY + window.pageYOffset), e.target.id,new Date().getTime()) }))
 });
 
-
 // ---- Assign unique ids to everything that doesn't have an ID ----
-$('#html-loc').find('*').uniqueId() 
+$('#html-loc').find('*').uniqueId()
