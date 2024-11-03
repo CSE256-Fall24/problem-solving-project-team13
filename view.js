@@ -1,13 +1,19 @@
 // ---- Define your dialogs  and panels here ----
-
 let effPerms = define_new_effective_permissions("effective_perms", true)
-$('#sidepanel').append(effPerms)
-
 let userSelector = define_new_user_select_field("user_select", "Select User", function(selected_user) {
     effPerms.attr('username', selected_user);
 });
-
+let permsTitle = $(`
+<div id="d"> 
+    <h1>Effective Permissions</h1>
+    <h3>   Click "select user" to see what permissions each user has.</h3>
+</div>
+`)
+$('#sidepanel').append(permsTitle);
+$('#sidepanel').append(effPerms)
 $('#sidepanel').append(userSelector);
+
+
 
 effPerms.attr('filepath', '/C/presentation_documents/important_file.txt');
 
