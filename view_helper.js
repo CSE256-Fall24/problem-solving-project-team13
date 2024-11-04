@@ -502,6 +502,25 @@ function define_new_user_select_field(id_prefix, select_button_text, on_user_cha
     return sel_section
 }
 
+function alertOnChange(on_user_change= function(selected_user){}) {
+//todo: pop up text saying "you have changes the premissons for selected_user "
+let selected_user =  on_user_change(new_username)
+
+showAlert(`You have changed the permissions for ${selected_user}`);
+
+}
+
+function showAlert(message) {
+    const alertBox = document.getElementById('alert');
+    alertBox.textContent = message;
+    alertBox.style.display = 'block';
+
+    setTimeout(() => {
+        alertBox.style.display = 'none';
+    }, 3000);
+}
+
+
 //---- misc. ----
 
 // Get a (very simple) text representation of a permissions explanation

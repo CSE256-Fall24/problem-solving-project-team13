@@ -33,6 +33,18 @@
     border-top: 1px orange solid;
 }
 
+.alert {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: blue; /* Green background */
+    color: white;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
 .no-close .ui-dialog-titlebar-close {
     display: none;
 }
