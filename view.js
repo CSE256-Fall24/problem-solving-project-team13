@@ -1,8 +1,8 @@
 // ---- Define your dialogs  and panels here ----
-let effPerms = define_new_effective_permissions("effective_perms", true)
-let userSelector = define_new_user_select_field("user_select", "Select User", function(selected_user) {
-    effPerms.attr('username', selected_user);
-});
+const id_prefix = "effectivepermissions";
+const addInfoCol = true; // Adjust as needed based on your requirements
+const whichPermissions = null; // Use all permissions
+const permissions_panal = define_new_effective_permissions(id_prefix, addInfoCol, whichPermissions);
 let permsTitle = $(`
 <div id="d"> 
     <h1>Effective Permissions</h1>
@@ -10,37 +10,6 @@ let permsTitle = $(`
 </div>
 `)
 $('#sidepanel').append(permsTitle);
-$('#sidepanel').append(effPerms)
-$('#sidepanel').append(userSelector);
-
-
-
-effPerms.attr('filepath', '/C/presentation_documents/important_file.txt');
-
-let singleLog = define_new_dialog("explanation", "More Info");
-
-$('.perm_info').click(function(){
-    let filepath = $('#effective_perms').attr('filepath');
-    let username = $('#effective_perms').attr('username');
-    let perms = $(this).attr('permission_name');
-
-    let user = all_users[filepath];
-    let file = path_to_file[username];
-
-    if (user && file) {
-        let allowed = allow_user_action(file, user, perms);
-        let explanation = get_explanation_text(allowed);
-
-        explanation.text(explanation);
-        explanation_dialog.dialog('open');
-    } else {
-        console.log("Error :(")
-    }
-const id_prefix = "effectivepermissions";
-const addInfoCol = true; // Adjust as needed based on your requirements
-const whichPermissions = null; // Use all permissions
-const permissions_panal = define_new_effective_permissions(id_prefix, addInfoCol, whichPermissions);
-
 $('#sidepanel').append(permissions_panal)
 const select_button_text = "select user";
 
@@ -61,30 +30,30 @@ $('.perm_info').click(function() {
     console.log('Username:', username);
     console.log('Filepath:', filepath);
     console.log('Permission Type:', permissionType);
-    const permissionToCheck = $( this );
+    //const permissionToCheck = $( this );
     const explain_why = true;
     const file = path_to_file[filepath];
     const user = all_users[username];
     const explanation = allow_user_action(file, user, permissionType, true)
-    const allow_user = allow_user_action(file, user, permissionToCheck, explain_why);
-    console.log($('#effectivepermissions').append(allow_user))
+    //const allow_user = allow_user_action(file, user, permissionToCheck, explain_why);
+    //console.log($('#effectivepermissions').append(allow_user))
     const explanationText = get_explanation_text(explanation);
-    console.log(explanationText);
-    console.log($('#perm_info').text(explanationText));
-   info.html(explanationText);
+    //console.log(explanationText);
+    // console.log($('#perm_info').text(explanationText));
+    info.html(explanationText);
 
-     if (user && file) {
-         //  const allowed = allow_user_action(file, user, perms);
-         //  const explanation = get_explanation_text(allowed);
-         const explanation = allow_user_action(file, user, permissionType, true)
-         const explanationText = get_explanation_text(explanation);
-          info.html(explanationText);
-      //explanation.text(explanation);
-          //explanation_dialog.dialog('open');
-      } else {
-          console.log("Error :(")
-      }
-     info.html(explanationText);
+    // if (user && file) {
+    //     //  const allowed = allow_user_action(file, user, perms);
+    //     //  const explanation = get_explanation_text(allowed);
+    //     const explanation = allow_user_action(file, user, permissionType, true)
+    //     const explanationText = get_explanation_text(explanation);
+    //      info.html(explanationText);
+    //  //explanation.text(explanation);
+    //      //explanation_dialog.dialog('open');
+    //  } else {
+    //      console.log("Error :(")
+    //  }
+    //info.html(explanationText);
 })
 // ---- Display file structure ----
 $('#effectivepermissions').attr('filepath', '/C')
