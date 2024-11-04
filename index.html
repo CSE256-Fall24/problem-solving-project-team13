@@ -104,27 +104,47 @@
                     </table>
                 </div>
                 <!-- structure for the Advanced dialog: -->
-                <div title="Advanced Security Settings" id="advdialog" style="overflow:hidden">
+                <div title="Security Settings" id="advdialog" style="overflow-y: scroll;">
                     <div id="advtabs">
-                        <ul id="advtabs_titles">
+                        <!-- <ul id="advtabs_titles">
                             <li id="advtab_title_permissions"><a href="#adv_permissions_tab"
                                     id="adv_permissions_tab_elem">Permissions</a></li>
                             <li id="advtab_title_owner"><a href="#adv_owner_tab" id="adv_owner_tab_elem">Owner</a></li>
                             <li id="advtab_title_effective"><a href="#adv_effective_tab"
                                     id="adv_effective_tab_elem">Effective Permissions</a></li>
-                        </ul>
+                        </ul> -->
                         <div id="adv_permissions_tab">
-                            <div id="adv_perm_object_name" class="section">Object Name: <span
+                            <div id="adv_perm_object_name" class="section">Editing permissions of file: <span
                                     id="adv_perm_filepath"></span></div>
-                            <div id="adv_perm_entries_text">Permission entries:</div>
+                            <p>
+                                Choose a user or group to edit permissions for:
+                            </p>
+                            <div title="Select Users or Groups" id="user_select_dialog">
+                                <div id="user_select_container"></div>
+                            </div>
+                            <div id="adv_perm_inheritance_div">
+                                <input type="checkbox" id="adv_perm_inheritance" name="inherit">
+                                <label for="adv_perm_inheritance" id="adv_perm_inheritance_label">Include inheritable
+                                    permissions from this object's parent</label>
+                            </div>
+                            <div id="adv_perm_replace_child_div">
+                                <input type="checkbox" id="adv_perm_replace_child_permissions" name="replace_child">
+                                <label for="adv_perm_replace_child_permissions"
+                                    id="adv_perm_replace_child_permissions_label">Replace all child object permissions
+                                    with inheritable permissions from this object</label>
+                            </div>
+                            <p>Permissions for:
+                                <b><span id="selected_user" class="ui-widget-content section" style="width:200px;display:inline-block;"></span></b>
+                            </p>
+                            <!-- <div id="adv_perm_entries_text">Permission entries:</div>
                             <div id="adv_perm_table_container" style="height:100px;overflow-y:scroll"
                                 class="ui-widget-content section">
                                 <table id="adv_perm_table" width="100%">
                                     <tr id="adv_perm_header">
-                                        <th id="adv_perm_header_type">Type</th>
-                                        <th id="adv_perm_header_name">Name</th>
-                                        <th id="adv_perm_header_permission">Permission</th>
-                                        <th id="adv_perm_header_inherited">Inherited from</th>
+                                        <th id="adv_perm_header_type">Permission</th>
+                                        <th id="adv_perm_header_name">Allow</th>
+                                        <th id="adv_perm_header_permission">Deny</th>
+                                        <th id="adv_perm_header_inherited">Result</th>
                                     </tr>
                                 </table>
                             </div>
@@ -139,9 +159,9 @@
                                 <label for="adv_perm_replace_child_permissions"
                                     id="adv_perm_replace_child_permissions_label">Replace all child object permissions
                                     with inheritable permissions from this object</label>
-                            </div>
+                            </div> -->
                         </div>
-                        <div id="adv_owner_tab">
+                        <!-- <div id="adv_owner_tab">
                             <div id="adv_owner_explanation" class="section">You can take or assign ownership of this
                                 object if you have the required permissions or privileges.</div>
                             <div id="adv_owner_object_name" class="section">Object Name: <span
@@ -166,7 +186,7 @@
                             <div id="adv_effective_effective_text">Effective permissions:</div>
                             <div id="adv_effective_effective_list" class="ui-widget-content"
                                 style="height:150px;overflow-y:scroll"></div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <!-- structure for the User Select dialog: -->

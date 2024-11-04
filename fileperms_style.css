@@ -48,10 +48,15 @@
     flex-direction: row;
 }
 
-#wrapper > .left {
+#wrapper > :first-child {
     flex: 0 0 65%;
 }
 
-#wrapper > .right {
+#wrapper > :last-child {
     flex: 0 0 35%;
+}
+
+#user_select_all_users {
+    width: 200px;
+    overflow-y: scroll;
 }

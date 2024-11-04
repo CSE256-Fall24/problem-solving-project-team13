@@ -114,7 +114,8 @@ $('.permbutton').click( function( e ) {
     // Set the path and open dialog:
     let path = e.currentTarget.getAttribute('path');
     perm_dialog.attr('filepath', path)
-    perm_dialog.dialog('open')
+    // perm_dialog.dialog('open')
+    open_advanced_dialog(perm_dialog.attr('filepath'))
     //open_permissions_dialog(path)
 
     // Deal with the fact that folders try to collapse/expand when you click on their permissions button:
