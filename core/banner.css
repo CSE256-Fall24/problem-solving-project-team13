@@ -1,5 +1,5 @@
 #mturk-top-banner {
-    background-color: orange;
+    background-color: #89CFF0;
     display: block;
     position: -webkit-sticky;
     position: sticky;
@@ -55,18 +55,18 @@ span {
     font-style: normal;
     height: 31px;
     padding: 5px;
-    border: 1px rgb(255, 97, 40) solid;
+    border: 1px #89CFF0;
     border-radius: 8px;
 }
 
 .mturk-top-banner-back-woh {
     cursor: not-allowed;
-    background-color: rgb(248, 126, 81);
+    background-color: #89CFF0;
 }
 
 .mturk-top-banner-back-wh {
     cursor: pointer;
-    background-color: rgb(248, 126, 81);
+    background-color: #89CFF0;
 }
 
 .mturk-top-banner-back-wh:hover {
@@ -99,9 +99,9 @@ span {
     background-color: #eee;
     z-index: 100;
     padding: 10px 10px 10px 10px;
-    border-left: 1px orange solid;
-    border-right: 1px orange solid;
-    border-bottom: 1px orange solid;
+    border-left: 1px #89CFF0;
+    border-right: 1px #89CFF0;
+    border-bottom: 1px #89CFF0;
 }
 
 #mturk-top-banner-drop-down-content h1 {
