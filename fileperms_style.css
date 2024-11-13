@@ -36,3 +36,22 @@
 .no-close .ui-dialog-titlebar-close {
     display: none;
 }
+
+#html-loc{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+#wrapper > .left {
+    flex: 0 0 65%;
+}
+
+#wrapper > .right {
+    flex: 0 0 35%;
+}
