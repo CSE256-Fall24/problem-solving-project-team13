@@ -34,7 +34,6 @@ obj_name_div = $('<div id="permdialog_objname" class="section">Object Name: <spa
 //instructions for adding a user
 add_user_explained = $('<div id="permdialog_add_user_explained"><strong>If user not listed, click Add a User</strong></div>')
 
-
 //Make the div with the explanation about special permissions/advanced settings:
 advanced_expl_div = $('<div id="permdialog_advanced_explantion_text"><strong>If permission not found, click More Permissions</strong></div>')
 
