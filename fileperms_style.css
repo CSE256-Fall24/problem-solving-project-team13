@@ -7,6 +7,10 @@
     margin-bottom: 5px;
 }
 
+.ui-button {
+    margin: 12.5px;
+}
+
 .ui-selected { 
     background: #007fff; 
     color: white; 
@@ -48,10 +52,23 @@
     flex-direction: row;
 }
 
-#wrapper > .left {
-    flex: 0 0 65%;
+#wrapper > *:first-child {
+    flex: 0 0 60%;
 }
 
-#wrapper > .right {
-    flex: 0 0 35%;
+#wrapper > *:last-child {
+    flex: 0 0 40%;
+}
+
+#ui-id-37 {
+    width: 50%!important;
+}
+
+#permdialog_file_user_list {
+    height: auto!important;
+    width: 100%!important;
+}
+
+.ui-dialog .ui-dialog-content {
+    height: auto!important;
 }

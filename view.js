@@ -5,32 +5,26 @@ const whichPermissions = null; // Use all permissions
 const permissions_panal = define_new_effective_permissions(id_prefix, addInfoCol, whichPermissions);
 let permsTitle = $(`
 <div id="d"> 
-    <h1>Effective Permissions</h1>
-    <h3>   Click "select user" to see what permissions each user has.</h3>
+    <h1>Effective Permissions for <span id="permdialog_grouped_permissions_header_usernames"></h1>
 </div>
 `)
-$('#sidepanel').append(permsTitle);
-$('#sidepanel').append(permissions_panal)
-const select_button_text = "select user";
-
-const user_select_field = define_new_user_select_field(id_prefix, select_button_text, on_user_change = function(selected_user){$('#effectivepermissions').attr('username', selected_user)});
-$('#sidepanel').append(user_select_field)
-
+perm_dialog.append(permsTitle);
+perm_dialog.append(permissions_panal);
 
 const title = 'more info';
 const info = define_new_dialog(id_prefix, title, options);
 
-$('.perm_info').click(function() {
-    console.log('clicked!')
-    info.dialog('open');
-    const filepath = $('#effectivepermissions').attr('filepath')
-    const username = $('#effectivepermissions').attr('username')
+$('#permdialog_grouped_permissions_header_usernames').on('DOMSubtreeModified', function() {
+    const filepath = perm_dialog.attr('filepath')
+    permissions_panal.attr('filepath', filepath)
+    const username = grouped_permissions.attr('username')
+    permissions_panal.attr('username', username)
     const permissionType = $(this).attr('permission_name')
 
     console.log('Username:', username);
     console.log('Filepath:', filepath);
     console.log('Permission Type:', permissionType);
-    //const permissionToCheck = $( this );
+    const permissionToCheck = $( this );
     const explain_why = true;
     const file = path_to_file[filepath];
     const user = all_users[username];
@@ -42,21 +36,20 @@ $('.perm_info').click(function() {
     // console.log($('#perm_info').text(explanationText));
     info.html(explanationText);
 
-    // if (user && file) {
-    //     //  const allowed = allow_user_action(file, user, perms);
-    //     //  const explanation = get_explanation_text(allowed);
-    //     const explanation = allow_user_action(file, user, permissionType, true)
-    //     const explanationText = get_explanation_text(explanation);
-    //      info.html(explanationText);
-    //  //explanation.text(explanation);
-    //      //explanation_dialog.dialog('open');
-    //  } else {
-    //      console.log("Error :(")
-    //  }
-    //info.html(explanationText);
+    if (user && file) {
+        //  const allowed = allow_user_action(file, user, perms);
+        //  const explanation = get_explanation_text(allowed);
+        const explanation = allow_user_action(file, user, permissionType, true)
+        const explanationText = get_explanation_text(explanation);
+         info.html(explanationText);
+     //explanation.text(explanation);
+         //explanation_dialog.dialog('open');
+     } else {
+         console.log("Error :(")
+     }
+    info.html(explanationText);
 })
 // ---- Display file structure ----
-$('#effectivepermissions').attr('filepath', '/C')
 
 // (recursively) makes and returns an html element (wrapped in a jquery object) for a given file object
 function make_file_element(file_obj) {
@@ -67,7 +60,7 @@ function make_file_element(file_obj) {
             <h3 id="${file_hash}_header">
                 <span class="bi bi-folder2" id="${file_hash}_icon"/> ${file_obj.filename} 
                 <button class="ui-button ui-widget ui-corner-all permbutton" path="${file_hash}" id="${file_hash}_permbutton"> 
-                    <span class="bi bi-unlock" id="${file_hash}_permicon"/> 
+                    <span id="${file_hash}_permicon"> Edit Permissions </span>
                 </button>
             </h3>
         </div>`)
@@ -87,7 +80,7 @@ function make_file_element(file_obj) {
         return $(`<div class='file'  id="${file_hash}_div">
             <span class="bi bi-file-earmark" id="${file_hash}_icon"/> ${file_obj.filename}
             <button class="ui-button ui-widget ui-corner-all permbutton" path="${file_hash}" id="${file_hash}_permbutton"> 
-                <span class="bi bi-unlock" id="${file_hash}_permicon"/> 
+                <span id="${file_hash}_permicon"> Edit Permissions </span>
             </button>
         </div>`)
     }

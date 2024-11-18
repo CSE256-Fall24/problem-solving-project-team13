@@ -256,6 +256,7 @@ function define_grouped_permission_checkboxes(id_prefix, which_groups = null) {
 
             // change name on table:
             $(`#${id_prefix}_header_username`).text(username)
+            $(`#${id_prefix}_header_usernames`).text(username)
 
             // get new grouped permissions:
             let grouped_perms = get_grouped_permissions(path_to_file[filepath], username)
